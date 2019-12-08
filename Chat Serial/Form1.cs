@@ -99,6 +99,11 @@ namespace Chat_Serial
 
                 listBox1.Items.Add("Irwin : " + serialPort1.ReadExisting());
                 dataReceived = false;
+                if(listBox1.Items.Count > 10)
+                {
+                    listBox1.Items.Remove(0);
+                }
+                listBox1.SelectedIndex = listBox1.Items.Count - 1;
             }
             
         }
@@ -106,6 +111,7 @@ namespace Chat_Serial
         private void Button2_Click(object sender, EventArgs e)
         {
             serialPort1.Write(richTextBox1.Text+"\n");
+            listBox1.Items.Add("Rachmat : " + richTextBox1.Text);
         }
     }
 }
